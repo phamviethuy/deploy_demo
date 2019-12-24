@@ -1,0 +1,77 @@
+<div class="parrent-container">
+<div class="function-button-container">
+  <div class="upload-file-container">
+    <input type="file" id="input" class="btn btn-default" (change) = "incomingfile($event)" multiple="multiple"/>
+    <mat-progress-spinner diameter = "50"
+            [ngClass]="isConverted ? 'isUnVisiable' : 'isVisiable'"
+            mode="indeterminate">
+    </mat-progress-spinner>
+    <p class="convert-status">{{convertStatus}}</p>
+  </div>
+<div class="button-container">
+  <button (click)= "Start()" class="btn btn-default button-start" >Start</button>
+  <button (click)= "Clear()" class="btn btn-warning button-clear" >Clear</button>
+</div>
+
+</div>
+<div class="test-data-container">
+<p class="send-request-status">{{sendRequestStatus}}</p>
+
+<button class="btn btn-success pass-result">Pass: {{passItems}}</button>
+<button class="btn btn-warning fail-result">Fail: {{failItems}}</button>
+<ng-container *ngFor="let group of groupResponse">
+  <mat-accordion>
+    <mat-expansion-panel style="background-color: rgb(243, 243, 243); margin-top: 15px;" >
+      <mat-expansion-panel-header>
+        <mat-panel-title style="color: black;">
+          {{group.GroupName}}
+        </mat-panel-title>
+        <mat-panel-description style="color:black;">
+       Total: {{group.Total}} - Pass: {{group.PassItems}} - Fail:{{group.FailItems}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let response of group.TestResult">
+        <mat-accordion>
+          <mat-expansion-panel class="panel" >
+            <mat-expansion-panel-header [ngClass]="response.result == 'Pass' ? 'passed' : 'fail'">
+              <mat-panel-title>
+                Result: {{response.result}}   No: {{response.index}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Type:  {{response.itemType}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+              <table class="table table-hover">
+                  <td style="max-width: 400px;">
+                  <tr style="color: darkgreen;font-size: 17px;">Request Content</tr>
+                  <tr>Content: {{response.request.Content}}</tr>
+                  <tr>Method:  {{response.request.Method}}</tr>
+                  <tr>Api:  {{response.request.Url}}</tr>
+                  <tr>Request: <pre style="max-width: 400px;" ><code>{{response.request.ViewRequestBody}}</code></pre></tr>
+                </td>
+                  <td style="max-width: 400px;">
+                    <tr style="color: darkgreen;font-size: 17px;">Expected Result</tr>
+                    <tr>Http Status: {{response.expectedResult.Status}}</tr>
+                    <tr>Status: {{response.expectedResult.Response.Status}}</tr>
+                    <tr>OkData: <pre><code>{{response.expectedResult.Response.OkDataView}}</code></pre></tr>
+                    <tr>NgData: <pre><code>{{response.expectedResult.Response.NgDataView}}</code></pre></tr>
+                    </td>
+                  <td style="max-width: 400px;">
+                    <tr style="color: darkgreen;font-size: 17px;">Actual reponse</tr>
+                    <tr>Status: {{response.response.Status}}</tr>
+                    <tr>OkData: <pre><code>{{response.response.OkDataView}}</code></pre></tr>
+                    <tr>NgData: <pre><code>{{response.response.NgDataView}}</code></pre></tr></td>
+              </table>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-container>
+  
+</div>
+       
+</div>
+

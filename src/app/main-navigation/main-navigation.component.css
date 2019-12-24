@@ -1,0 +1,54 @@
+.nav-header {
+  background-color: #82ae46;
+  color: whitesmoke;
+  height: 30px;
+  display: flex;
+}
+.nav-header > div{
+  width: 33%;
+  text-align: center;
+  line-height: 100%;
+}
+.nav-header-phone mat-icon {
+  font-size: 14px;
+  padding-top: 8px;
+  padding-left: 20%;
+  float: left;
+}
+
+.nav-header-phone p {
+  padding-left: 22px;
+  padding-top: 10px;
+  float: left;
+  font-size: 13px
+}
+
+.nav-header-email mat-icon {
+  font-size: 14px;
+  padding-top: 8px;
+  padding-left: 20%;
+  float: left;
+}
+
+.nav-header-email p{
+  font-size: 13px;
+  padding-left: 22px;
+  padding-top: 10px;
+  float: left;
+}
+.nav-header-title p{
+  padding-left: 20%;
+  padding-top: 10px;
+  float: left;
+  font-size: 13px
+}
+.main-menu-container{
+  background-color: white;
+  height: 80px;
+  display: flex;
+}
+.main-menu-container > div{
+  width: 50%;
+  text-align: center;
+  line-height: 100%;
+}
