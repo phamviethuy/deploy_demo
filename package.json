@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.13",
     "bootstrap": "^3.3.7",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "read-excel-file": "^4.0.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
